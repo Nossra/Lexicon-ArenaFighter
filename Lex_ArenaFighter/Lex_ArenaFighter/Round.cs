@@ -9,10 +9,10 @@ namespace Lex_ArenaFighter
     class Round
     {
         Random rnd = new Random();
-        Fighter player;
+        Player player;
         Fighter opponent;
 
-        public Round(Fighter player, Fighter opponent)
+        public Round(Player player, Fighter opponent)
         {
             this.player = player;
             this.opponent = opponent;           
@@ -20,33 +20,37 @@ namespace Lex_ArenaFighter
 
         public void Attack()
         {
-            if (opponent.ThrowDice() > player.ThrowDice())
+            Console.WriteLine("You rolled : " + player.ThrowDice() + ", while the opponent rolled: " + opponent.ThrowDice() + ".");
+            if (opponent.Dice > player.Dice)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Your opponent hit you for " + opponent.Damage + "!");
-                player.Health = player.Health - opponent.Damage;
-                Console.WriteLine("Your health is reduced to " + player.Health + "/" + player.BaseHealth);
-                Console.WriteLine();
+                EnemyAttack();
             }
-            else if (player.ThrowDice() > opponent.ThrowDice())
+            else if (player.Dice > opponent.Dice)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("You lashed out at the enemy and dealt " + player.Damage + " damage!");
-                opponent.Health = opponent.Health - player.Damage;
-                Console.WriteLine("His health is reduced to " + opponent.Health + "/" + opponent.BaseHealth);
-                Console.WriteLine();
+                PlayerAttack();
             }
-            else if (player.ThrowDice() == opponent.ThrowDice())
+            else if (player.Dice == opponent.Dice)
             {
                 Console.WriteLine("You stare each other down and wait for a better opportunity\n");
             }
-            Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public void PrintLog()
+        private void EnemyAttack()
         {
-
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Your opponent hit you for " + opponent.Damage + "!");
+            player.Health = player.Health - opponent.Damage;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Your health is reduced to " + player.Health + "/" + player.BaseHealth + "\n");
         }
 
+        private void PlayerAttack()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("You lashed out at the enemy and dealt " + player.Damage + " damage!");
+            opponent.Health = opponent.Health - player.Damage;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("His health is reduced to " + opponent.Health + "/" + opponent.BaseHealth + "\n");
+        }
     }
 }

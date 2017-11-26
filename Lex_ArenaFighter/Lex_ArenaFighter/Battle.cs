@@ -8,10 +8,10 @@ namespace Lex_ArenaFighter
 {
     class Battle
     {
-        Fighter player;
+        Player player;
         Fighter opponent;
 
-        public Battle(Fighter player)
+        public Battle(Player player)
         {
             this.player = player;
             opponent = new Fighter();
@@ -34,16 +34,18 @@ namespace Lex_ArenaFighter
                     Program.StoryMessage("You got rekt..");
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-
                     fighting = false;
                 }
                 else if (opponent.Health <1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Program.StoryMessage("You won the fight!");
-                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-
+                    Program.StoryMessage("You gained a point!\nYou stole his wallet and found a dollar.");
+                    player.Currency += 1;
+                    player.IncreasePoints();
+                    Console.Clear();
+                    
                     fighting = false;
                 }
             }
@@ -51,15 +53,16 @@ namespace Lex_ArenaFighter
 
         public void PrintFighters()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Program.SystemMessage("Player");
             Console.WriteLine("Name: " + player.Name
                             + "\nHP: " + player.Health + "/" + player.BaseHealth
-                            + "\nDamage: " + player.Damage);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\nName: " + opponent.Name
+                            + "\nDamage: " + player.Damage + "\n");
+
+            Program.SystemMessage("Opponent");
+            Console.WriteLine("Name: " + opponent.Name
                             + "\nHP: " + opponent.Health + "/" + opponent.BaseHealth
                             + "\nDamage: " + opponent.Damage + "\n");
-            Console.ForegroundColor = ConsoleColor.White;
+                          
             Console.ReadKey(true);
             Console.Clear();
         }

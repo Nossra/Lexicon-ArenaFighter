@@ -16,19 +16,20 @@ namespace Lex_ArenaFighter
         {
             StoryMessage("Welcome to the bar you rowdy rascal.");
             StoryMessage("....");
-            StoryMessage("Not very talkative.. Whats your name?");
-            Console.Clear();
+            StoryMessage("Not very talkative.. Whats your name?\n");
             SystemMessage("Write your name:");
-            Fighter player = new Fighter(true);
+            Player player = new Player();
+            StoryMessage("\nSit down at the bar " + player.Name + " and have a drink.");
+            StoryMessage("You walk over to the bar and tries to get the bartenders attention.");
             Console.Clear();
-            StoryMessage("Sit down at the bar " + player.Name + " and have a drink.");
-
             while (IsDrinking)
-            {
+            {                
                 Option(player);
                 if (player.Health < 1)
                 {
-                    StoryMessage("You fight bad and you should feel bad. You passed out and got thrown out of the pub.");
+                    StoryMessage("You fight bad and you should feel bad. You passed out and got thrown out of the pub.\n");
+                    PrintStats(player);
+                    Program.SystemMessage("Points: " + player.Points);
                     isDrinking = false;
                 }
             }
@@ -47,15 +48,17 @@ namespace Lex_ArenaFighter
             Console.ReadKey(true);
         }
 
-        public static void Option(Fighter player)
+        public static void Option(Player player)
         {
-            player.PrintCharacterInfo();
+            PrintStats(player);
             SystemMessage("\nF. Look up a barfight.\n"
-                          + "R. Retire and exit the bar.");
+                          + "R. Retire and exit the bar.\n"
+                          + "D. Order a drink to increase your health.");
+
             OptionResult(player);
         }
 
-        public static void OptionResult(Fighter player)
+        public static void OptionResult(Player player)
         {
             ConsoleKeyInfo s = Console.ReadKey(true);
             if (s.KeyChar == 'f' || s.KeyChar == 'F')
@@ -64,15 +67,36 @@ namespace Lex_ArenaFighter
             }
             else if (s.KeyChar == 'r' || s.KeyChar == 'R')
             {
-                Retire();
+                Retire(player);
             }
-            else if (s.KeyChar != 'r' || s.KeyChar != 'f' || s.KeyChar == 'f' || s.KeyChar == 'F')
+            else if (s.KeyChar == 'd' || s.KeyChar == 'D')
+            {
+                OrderDrink(player);
+            }
+            else 
             {
                 StoryMessage("\nDude what? We dont serve that here.");
             }    
         }
 
-        public static void CreateBattle(Fighter player)
+        public static void OrderDrink(Player player)
+        {
+            const int HEALTH_INCREASE = 3;
+
+            if (player.Currency > 0)
+            {
+                StoryMessage("You ordered a drink. It costed you 1 dollar and increased your health by " + HEALTH_INCREASE + ".\n");
+                player.Currency -= 1;
+                player.Health += HEALTH_INCREASE;
+                if (player.Health > player.BaseHealth) player.Health = player.BaseHealth;
+            }
+            else
+            {
+                StoryMessage("The bartender laughs in your face as you couldn't afford it.\n");
+            }
+        }
+        
+        public static void CreateBattle(Player player)
         {
             Console.Clear();
 
@@ -80,7 +104,8 @@ namespace Lex_ArenaFighter
             {
                 "You spot an ugly looking fella' in the corner.\nSince you're a butthole you decide to fight him for some reason",
                 "You mutter something to yourself, but someone mistakes your comment about your drink as something bad about his mother.\nHe walks up to you. - U WOT M8!?"
-                };
+            };
+
             Random rnd = new Random();
             int rndMessage = rnd.Next(fightmsg.Length);
 
@@ -90,11 +115,22 @@ namespace Lex_ArenaFighter
             b.Fight();
         }
 
-        public static void Retire()
+        public static void Retire(Player player)
         {
             Console.Clear();
-            Console.WriteLine("Retiring from the bar..");
+            Console.WriteLine("Retiring from the bar..\n");
+            PrintStats(player);
+            Program.SystemMessage("Points: " + player.Points);
             isDrinking = false;
+        }
+
+        public static void PrintStats(Player player)
+        {
+            Program.SystemMessage("Name: " + player.Name
+                                + "\nHealth: " + player.Health + "/" + player.BaseHealth
+                                + "\nDamage: " + player.Damage
+                                + "\nWallet: " + player.Currency + "$.\n");
+
         }
     }
 }
