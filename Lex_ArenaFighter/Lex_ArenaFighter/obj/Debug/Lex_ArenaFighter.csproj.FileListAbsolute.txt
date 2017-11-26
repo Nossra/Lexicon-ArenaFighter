@@ -1,0 +1,7 @@
+C:\Users\N0ssLin\source\repos\Lex_ArenaFighter\Lex_ArenaFighter\bin\Debug\Lex_ArenaFighter.exe.config
+C:\Users\N0ssLin\source\repos\Lex_ArenaFighter\Lex_ArenaFighter\bin\Debug\Lex_ArenaFighter.exe
+C:\Users\N0ssLin\source\repos\Lex_ArenaFighter\Lex_ArenaFighter\bin\Debug\Lex_ArenaFighter.pdb
+C:\Users\N0ssLin\source\repos\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.csprojResolveAssemblyReference.cache
+C:\Users\N0ssLin\source\repos\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.csproj.CoreCompileInputs.cache
+C:\Users\N0ssLin\source\repos\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.exe
+C:\Users\N0ssLin\source\repos\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.pdb
