@@ -8,6 +8,7 @@ namespace Lex_ArenaFighter
 {
     class Program
     {
+        //test after changes to gitignore
         static bool isDrinking = true;
 
         public static bool IsDrinking { get => isDrinking; set => isDrinking = value; }
