@@ -28,8 +28,7 @@ namespace Lex_ArenaFighter
                 if (player.Health < 1)
                 {
                     StoryMessage("You fight bad and you should feel bad. You passed out and got thrown out of the pub.\n");
-                    PrintStats(player);
-                    Program.SystemMessage("Points: " + player.Points);
+                    PrintEndStats(player);
                     isDrinking = false;
                 }
             }
@@ -75,7 +74,7 @@ namespace Lex_ArenaFighter
             }
             else 
             {
-                StoryMessage("\nDude what? We dont serve that here.");
+                StoryMessage("\nDude what? We dont serve that here.\n");
             }    
         }
 
@@ -119,8 +118,7 @@ namespace Lex_ArenaFighter
         {
             Console.Clear();
             Console.WriteLine("Retiring from the bar..\n");
-            PrintStats(player);
-            Program.SystemMessage("Points: " + player.Points);
+            PrintEndStats(player);
             isDrinking = false;
         }
 
@@ -130,6 +128,17 @@ namespace Lex_ArenaFighter
                                 + "\nHealth: " + player.Health + "/" + player.BaseHealth
                                 + "\nDamage: " + player.Damage
                                 + "\nWallet: " + player.Currency + "$.\n");
+
+        }
+
+        public static void PrintEndStats(Player player)
+        {
+            Program.SystemMessage("Name: " + player.Name
+                                + "\nHealth: " + player.Health + "/" + player.BaseHealth
+                                + "\nDamage: " + player.Damage
+                                + "\nWallet: " + player.Currency + "$."
+                                + "\nPoints: " + player.Points);
+            Console.ReadKey(true);
 
         }
     }
