@@ -8,8 +8,6 @@ namespace Lex_ArenaFighter
 {
     class Fighter
     {
-
-        //test
         static Random rnd = new Random();
 
         int health = rnd.Next(4) + 7;
