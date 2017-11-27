@@ -74,7 +74,8 @@ namespace Lex_ArenaFighter
             }
             else 
             {
-                StoryMessage("\nDude what? We dont serve that here.\n");
+                StoryMessage("Dude what? We dont serve that here.\n");
+                Console.Clear();
             }    
         }
 
@@ -88,10 +89,12 @@ namespace Lex_ArenaFighter
                 player.Currency -= 1;
                 player.Health += HEALTH_INCREASE;
                 if (player.Health > player.BaseHealth) player.Health = player.BaseHealth;
+                Console.Clear();
             }
             else
             {
                 StoryMessage("The bartender laughs in your face as you couldn't afford it.\n");
+                Console.Clear();
             }
         }
 

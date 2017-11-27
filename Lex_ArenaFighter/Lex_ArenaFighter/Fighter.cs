@@ -15,7 +15,7 @@ namespace Lex_ArenaFighter
         int damage = rnd.Next(3) + 3;
         string name;
         int dice;
-        string[] computerNames = { "Adam", "Håkan", "Bernt", "Sture", "Stefan" };
+        string[] computerNames = { "Adam", "Håkan", "Bernt", "Sture", "Stefan", "Bengt-Arne", "Evert", "Svert", "Bert", "Erolf", "Ingvar", "Lasse" };
 
 
         public Fighter()
