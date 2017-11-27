@@ -10,6 +10,9 @@ namespace Lex_ArenaFighter
     {
         Player player;
         Fighter opponent;
+        static List<string> log = new List<string>();
+
+        public static List<string> Log { get => log; set => log = value; }
 
         public Battle(Player player)
         {
@@ -30,28 +33,20 @@ namespace Lex_ArenaFighter
 
                 if (player.Health <1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;;
-                    Program.StoryMessage("You got rekt..");
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Lose();
+                    Log.Add("You fought and lost against " + opponent.Name);
                     fighting = false;
                 }
                 else if (opponent.Health <1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Program.StoryMessage("You won the fight!");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Program.StoryMessage("You gained a point!\nYou stole his wallet and found a dollar.");
-                    player.Currency += 1;
-                    player.IncreasePoints();
-                    Console.Clear();
-                    
+                    Win();
+                    Log.Add("You fought and killed " + opponent.Name);
                     fighting = false;
                 }
             }
         }    
 
-        public void PrintFighters()
+        private void PrintFighters()
         {
             Program.SystemMessage("Player");
             Console.WriteLine("Name: " + player.Name
@@ -64,6 +59,25 @@ namespace Lex_ArenaFighter
                             + "\nDamage: " + opponent.Damage + "\n");
                           
             Console.ReadKey(true);
+            Console.Clear();
+        }
+
+        private void Lose()
+        {
+            Console.ForegroundColor = ConsoleColor.Red; ;
+            Program.StoryMessage("You got rekt..");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        private void Win()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Program.StoryMessage("You won the fight!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Program.StoryMessage("You gained a point!\nYou stole his wallet and found a dollar.");
+            player.Currency += 1;
+            player.IncreasePoints();
             Console.Clear();
         }
     }

@@ -47,7 +47,7 @@ namespace Lex_ArenaFighter
             Console.ReadKey(true);
         }
 
-        public static void Option(Player player)
+        private static void Option(Player player)
         {
             PrintStats(player);
             SystemMessage("\nF. Look up a barfight.\n"
@@ -57,7 +57,7 @@ namespace Lex_ArenaFighter
             OptionResult(player);
         }
 
-        public static void OptionResult(Player player)
+        private static void OptionResult(Player player)
         {
             ConsoleKeyInfo s = Console.ReadKey(true);
             if (s.KeyChar == 'f' || s.KeyChar == 'F')
@@ -78,7 +78,7 @@ namespace Lex_ArenaFighter
             }    
         }
 
-        public static void OrderDrink(Player player)
+        private static void OrderDrink(Player player)
         {
             const int HEALTH_INCREASE = 3;
 
@@ -94,8 +94,8 @@ namespace Lex_ArenaFighter
                 StoryMessage("The bartender laughs in your face as you couldn't afford it.\n");
             }
         }
-        
-        public static void CreateBattle(Player player)
+
+        private static void CreateBattle(Player player)
         {
             Console.Clear();
 
@@ -114,7 +114,7 @@ namespace Lex_ArenaFighter
             b.Fight();
         }
 
-        public static void Retire(Player player)
+        private static void Retire(Player player)
         {
             Console.Clear();
             Console.WriteLine("Retiring from the bar..\n");
@@ -122,7 +122,7 @@ namespace Lex_ArenaFighter
             isDrinking = false;
         }
 
-        public static void PrintStats(Player player)
+        private static void PrintStats(Player player)
         {
             Program.SystemMessage("Name: " + player.Name
                                 + "\nHealth: " + player.Health + "/" + player.BaseHealth
@@ -131,13 +131,20 @@ namespace Lex_ArenaFighter
 
         }
 
-        public static void PrintEndStats(Player player)
+        private static void PrintEndStats(Player player)
         {
             Program.SystemMessage("Name: " + player.Name
                                 + "\nHealth: " + player.Health + "/" + player.BaseHealth
                                 + "\nDamage: " + player.Damage
-                                + "\nWallet: " + player.Currency + "$."
-                                + "\nPoints: " + player.Points);
+                                + "\nWallet: " + player.Currency + "$\n");
+            
+            foreach (string item in Battle.Log)
+            {
+                Program.SystemMessage(item);
+            }
+
+            Program.SystemMessage("\nYour points: " + player.Points + "\n");
+            
             Console.ReadKey(true);
 
         }
