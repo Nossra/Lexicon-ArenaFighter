@@ -30,28 +30,18 @@ namespace Lex_ArenaFighter
 
                 if (player.Health <1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;;
-                    Program.StoryMessage("You got rekt..");
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Lose();
                     fighting = false;
                 }
                 else if (opponent.Health <1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Program.StoryMessage("You won the fight!");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Program.StoryMessage("You gained a point!\nYou stole his wallet and found a dollar.");
-                    player.Currency += 1;
-                    player.IncreasePoints();
-                    Console.Clear();
-                    
+                    Win();
                     fighting = false;
                 }
             }
         }    
 
-        public void PrintFighters()
+        private void PrintFighters()
         {
             Program.SystemMessage("Player");
             Console.WriteLine("Name: " + player.Name
@@ -64,6 +54,25 @@ namespace Lex_ArenaFighter
                             + "\nDamage: " + opponent.Damage + "\n");
                           
             Console.ReadKey(true);
+            Console.Clear();
+        }
+
+        private void Lose()
+        {
+            Console.ForegroundColor = ConsoleColor.Red; ;
+            Program.StoryMessage("You got rekt..");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        private void Win()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Program.StoryMessage("You won the fight!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Program.StoryMessage("You gained a point!\nYou stole his wallet and found a dollar.");
+            player.Currency += 1;
+            player.IncreasePoints();
             Console.Clear();
         }
     }

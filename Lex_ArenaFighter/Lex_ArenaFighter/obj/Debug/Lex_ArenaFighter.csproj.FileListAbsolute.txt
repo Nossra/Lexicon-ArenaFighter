@@ -12,3 +12,10 @@ C:\Users\N0ssLin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_Aren
 C:\Users\N0ssLin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.csproj.CoreCompileInputs.cache
 C:\Users\N0ssLin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.exe
 C:\Users\N0ssLin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.pdb
+C:\Users\Martin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_ArenaFighter\bin\Debug\Lex_ArenaFighter.exe.config
+C:\Users\Martin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_ArenaFighter\bin\Debug\Lex_ArenaFighter.exe
+C:\Users\Martin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_ArenaFighter\bin\Debug\Lex_ArenaFighter.pdb
+C:\Users\Martin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.csprojResolveAssemblyReference.cache
+C:\Users\Martin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.csproj.CoreCompileInputs.cache
+C:\Users\Martin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.exe
+C:\Users\Martin\Documents\GitHub\Lexicon-ArenaFighter\Lex_ArenaFighter\Lex_ArenaFighter\obj\Debug\Lex_ArenaFighter.pdb
