@@ -136,8 +136,15 @@ namespace Lex_ArenaFighter
             Program.SystemMessage("Name: " + player.Name
                                 + "\nHealth: " + player.Health + "/" + player.BaseHealth
                                 + "\nDamage: " + player.Damage
-                                + "\nWallet: " + player.Currency + "$."
-                                + "\nPoints: " + player.Points);
+                                + "\nWallet: " + player.Currency + "$\n");
+            
+            foreach (string item in Battle.Log)
+            {
+                Program.SystemMessage(item);
+            }
+
+            Program.SystemMessage("\nYour points: " + player.Points + "\n");
+            
             Console.ReadKey(true);
 
         }

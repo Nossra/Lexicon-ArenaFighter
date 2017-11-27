@@ -10,6 +10,9 @@ namespace Lex_ArenaFighter
     {
         Player player;
         Fighter opponent;
+        static List<string> log = new List<string>();
+
+        public static List<string> Log { get => log; set => log = value; }
 
         public Battle(Player player)
         {
@@ -31,11 +34,13 @@ namespace Lex_ArenaFighter
                 if (player.Health <1)
                 {
                     Lose();
+                    Log.Add("You fought and lost against " + opponent.Name);
                     fighting = false;
                 }
                 else if (opponent.Health <1)
                 {
                     Win();
+                    Log.Add("You fought and killed " + opponent.Name);
                     fighting = false;
                 }
             }
