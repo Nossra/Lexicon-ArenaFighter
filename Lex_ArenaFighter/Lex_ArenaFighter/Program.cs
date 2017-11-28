@@ -60,23 +60,23 @@ namespace Lex_ArenaFighter
         private static void OptionResult(Player player)
         {
             ConsoleKeyInfo s = Console.ReadKey(true);
-            if (s.KeyChar == 'f' || s.KeyChar == 'F')
+
+            switch(s.KeyChar)
             {
-                CreateBattle(player);
+                case 'f': case 'F':
+                    CreateBattle(player);
+                    break;
+                case 'r': case 'R':
+                    Retire(player);
+                    break;
+                case 'd': case 'D':
+                    OrderDrink(player);
+                    break;
+                default:
+                    StoryMessage("Dude what? We dont serve that here.\n");
+                    Console.Clear();
+                    break;
             }
-            else if (s.KeyChar == 'r' || s.KeyChar == 'R')
-            {
-                Retire(player);
-            }
-            else if (s.KeyChar == 'd' || s.KeyChar == 'D')
-            {
-                OrderDrink(player);
-            }
-            else 
-            {
-                StoryMessage("Dude what? We dont serve that here.\n");
-                Console.Clear();
-            }    
         }
 
         private static void OrderDrink(Player player)
